@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFrameworks>net8.0;net48</TargetFrameworks>
+    <AssemblyName>TestStandConverters</AssemblyName>
+    <RootNamespace>Virinco.WATS.Converter.NI.TestStand</RootNamespace>
+    <LangVersion>7.3</LangVersion>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <Nullable>disable</Nullable>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Virinco.WATS.Testing" Version="*" />
+    <Compile Remove="ConverterTests.cs" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)' == 'net48'">
+    <PackageReference Include="Virinco.WATS.ClientAPI" Version="7.*">
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Virinco.WATS.StandardConverters" Version="7.*">
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)' == 'net8.0'">
+    <PackageReference Include="Virinco.WATS.ClientAPI" Version="7.*">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>compile; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Virinco.WATS.StandardConverters" Version="7.*">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>compile; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+</Project>

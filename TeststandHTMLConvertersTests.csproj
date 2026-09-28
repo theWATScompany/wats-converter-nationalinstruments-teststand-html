@@ -1,0 +1,53 @@
+﻿<Project>
+  <PropertyGroup>
+    <!-- Separate obj path so NuGet assets don't collide with the converter project -->
+    <MSBuildProjectExtensionsPath>obj\Tests\</MSBuildProjectExtensionsPath>
+  </PropertyGroup>
+  <Import Project="Sdk.props" Sdk="Microsoft.NET.Sdk" />
+  <PropertyGroup>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <AssemblyName>TestStandConverters.Tests</AssemblyName>
+    <RootNamespace>Virinco.WATS.Converter.NI.TestStand</RootNamespace>
+    <LangVersion>7.3</LangVersion>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <Nullable>disable</Nullable>
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+  </PropertyGroup>
+  <!-- Exclude AssemblyInfo.cs â€” belongs to the converter project only -->
+  <ItemGroup>
+    <PackageReference Include="Virinco.WATS.Testing" Version="*" />
+    <Compile Remove="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <!-- Include only the test class, exclude converter source -->
+  <ItemGroup>
+    <PackageReference Include="Virinco.WATS.Testing" Version="*" />
+    <Compile Remove="TeststandHTMLConverter.cs" />
+    <Compile Remove="TeststandHTMLConverter_2010.cs" />
+    <Compile Remove="TeststandATMLHtmlConverter.cs" />
+  </ItemGroup>
+  <!-- Copy all Data files to test output directory -->
+  <ItemGroup>
+    <PackageReference Include="Virinco.WATS.Testing" Version="*" />
+    <None Update="Data\**\*.*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <!-- Converter project reference -->
+  <ItemGroup>
+    <PackageReference Include="Virinco.WATS.Testing" Version="*" />
+    <ProjectReference Include="TeststandHTMLConverters.csproj" />
+    
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Virinco.WATS.Testing" Version="*" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.9.0" />
+    <PackageReference Include="xunit" Version="2.6.6" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.5.6">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Virinco.WATS.StandardConverters" Version="7.*" />
+  </ItemGroup>
+  <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" />
+</Project>

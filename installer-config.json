@@ -1,0 +1,11 @@
+{
+    "assemblyName": "TestStandConverters",
+    "converterClass": "Virinco.WATS.Converter.NI.TestStand.TeststandHTMLConverter",
+    "displayName": "NI TestStand HTML Converter",
+    "description": "Converts National Instruments TestStand HTML report files to WATS UUT reports.",
+    "version": "1.0.0",
+    "fileFilter": "*.html",
+    "uploadPath": "C:\\ProgramData\\Virinco\\WATS\\NITestStandConverters",
+    "postProcessAction": "Archive",
+    "productGuid": "fb822442-6936-46db-b6d2-947314f7e21c"
+}
